@@ -1,0 +1,15 @@
+# /etc/systemd/system/grid-engine.service
+[Unit]
+StartLimitInterval=400
+StartLimitBurst=5
+After=network-online.target
+
+[Service]
+Type=idle
+Restart=always
+RestartSec=60
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/configure-sge.sh
+
+[Install]
+WantedBy=multi-user.target
